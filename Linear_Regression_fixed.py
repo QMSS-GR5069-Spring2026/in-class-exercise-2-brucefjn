@@ -185,6 +185,21 @@ predDF_final.write.mode('overwrite').csv('/Volumes/gr5069/jf3774/inclass/predDF.
 # COMMAND ----------
 
 import os
-os.makedirs('/Workspace/Users/jf3774@columbia.edu/in-class-exercise-2-brucefjn/airbnb', exist_ok=True)
 
-predDF_final.toPandas().to_csv('/Workspace/Users/jf3774@columbia.edu/in-class-exercise-2-brucefjn/airbnb/predDF.csv',index=False)
+target_dir = '/Workspace/Repos/jf3774@columbia.edu/in-class-exercise-2-brucefjn/airbnb'
+os.makedirs(target_dir, exist_ok=True)
+
+predDF_final.toPandas().to_csv(
+    os.path.join(target_dir, 'predDF.csv'),
+    index=False
+)
+
+# COMMAND ----------
+
+import os
+
+target_dir = '/Workspace/Repos/jf3774@columbia.edu/in-class-exercise-2-brucefjn/airbnb'
+os.makedirs(target_dir, exist_ok=True)
+
+target_file = os.path.join(target_dir, 'predDF.csv')
+predDF_final.toPandas().to_csv(target_file, index=False)
